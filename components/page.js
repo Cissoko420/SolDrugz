@@ -38,14 +38,18 @@ const Layout = ({ children }) => {
         {children}
       </span>
       <div className='absolute bottom-0 right-0 mb-3 mr-1 flex items-end'>
-        <a href='https://twitter.com/Drugz_on_Solana' className='mr-2'>
+        <a
+          href='https://twitter.com/Drugz_on_Solana'
+          className='mr-2'
+          target='_blank'
+        >
           <img
             className='w-[25px] h-[25px] object-right-bottom'
             src='images/logo-black.png'
             alt='Drugz_On_Solana Twitter'
           />
         </a>
-        <a href='https://t.me/drugzonsolana' className='mr-2'>
+        <a href='https://t.me/drugzonsolana' className='mr-2' target='_blank'>
           <img
             className='w-[25px] h-[25px] object-right-bottom'
             src='images/telegram-logo.png'
