@@ -80,7 +80,7 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className='cursor-default bg-r-gradient-bb min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none'>
+    <div className='cursor-default bg-r-gradient-bb min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'>
       <DrugzSolana />
       <div
         className={`w-[150px] sm:w-[20%] ${
