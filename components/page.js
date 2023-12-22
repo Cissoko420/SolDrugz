@@ -93,7 +93,7 @@ const Layout = ({ children }) => {
           className='min-w-[150px] object-cover mt-10 sm:w-full'
         />
       </div>
-      <div className='w-[75px] h-[40px] absolute bottom-0 right-0 mb-3 mr-1 flex justify-between items-center'>
+      <div className='w-[75px] h-[30px] sm:h-[40px] absolute bottom-0 right-0 mb-2 mr-1 flex justify-between items-center'>
         <a
           href='https://twitter.com/Drugz_on_Solana'
           className='mr-2'
@@ -113,9 +113,9 @@ const Layout = ({ children }) => {
           />
         </a>
       </div>
-      <div className='group absolute bottom-0 left-[10px] h-[50px] w-[60px] sm:h-[60px]'>
+      <div className='group absolute left-[10px] h-[40px] bottom-[5px] w-[50px] sm:h-[60px]'>
         <img
-          className={`z-50 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] `}
+          className={`z-50  w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] `}
           src='images/santa-running.gif'
         />
         <div className='opacity-0 group-hover:opacity-95 pointer-events-none left-[30px] sm:left-[40px] w-[250px]  h-[250px] sm:w-[500px] sm:h-[500px] absolute z-50 bottom-full ml-2 bg-blue-700 text-yellow-500 p-2 text-center text-3xl sm:text-5xl flex items-center justify-center'>
