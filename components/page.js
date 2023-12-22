@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DrugzSolana from './DrugzSolana'
+import TradingViewWidget from './TradingViewWidget'
 
 const Layout = ({ children }) => {
   const [imageIndex, setImageIndex] = useState(0)
@@ -118,8 +119,8 @@ const Layout = ({ children }) => {
           className={`z-50  w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] `}
           src='images/santa-running.gif'
         />
-        <div className='opacity-0 group-hover:opacity-95 pointer-events-none left-[30px] sm:left-[40px] w-[250px]  h-[250px] sm:w-[500px] sm:h-[500px] absolute z-50 bottom-full ml-2 bg-blue-700 text-yellow-500 p-2 text-center text-3xl sm:text-5xl flex items-center justify-center'>
-          Live Chart Soon
+        <div className='opacity-0 group-hover:opacity-95 pointer-events-none left-[30px] sm:left-[40px] w-[300px]  h-[500px] sm:w-[500px] sm:h-[500px] absolute z-50 bottom-full ml-2 bg-blue-700 text-yellow-500 p-2 text-center text-3xl sm:text-5xl flex items-center justify-center'>
+          <TradingViewWidget />
         </div>
       </div>
       <div className='w-[60px] h-[100px] sm:w-[80px] sm:h-[140px] absolute top-[20px] right-[5px] flex justify-between items-center'>
