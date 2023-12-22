@@ -136,7 +136,7 @@ const Layout = ({ children }) => {
       </div>
       {showLastText && (
         <div
-          className={`absolute object-center text-3xl bottom-[100px] md:bottom-[100px] xl:bottom-[150px] font-serif font-bold ${textColor} sm:text-6xl`}
+          className={`absolute object-center text-3xl bottom-[100px] md:bottom-[80px] xl:bottom-[80px] font-serif font-bold ${textColor} sm:text-6xl`}
         >
           Which Will You Choose?
         </div>
