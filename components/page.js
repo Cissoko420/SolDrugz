@@ -85,7 +85,7 @@ const Layout = ({ children }) => {
       <div
         className={`w-[150px] sm:w-[20%] ${
           flip ? 'scale-x-[-1]' : 'scale-x-100'
-        } transition durantion-1000 ease-in-out mb-[10px]`}
+        } transition durantion-1000 ease-in-out`}
       >
         <img
           src={imageSrc}
@@ -93,9 +93,6 @@ const Layout = ({ children }) => {
           className='min-w-[150px] object-cover mt-10 sm:w-full'
         />
       </div>
-      <span className='text-white leading-normal text-3xl font-bold sm:text-[3rem] mb-[30px]'>
-        {children}
-      </span>
       <div className='w-[75px] h-[40px] absolute bottom-0 right-0 mb-3 mr-1 flex justify-between items-center'>
         <a
           href='https://twitter.com/Drugz_on_Solana'
@@ -139,7 +136,7 @@ const Layout = ({ children }) => {
       </div>
       {showLastText && (
         <div
-          className={`absolute object-center text-3xl bottom-[100px] sm:bottom-[80px] font-serif font-bold ${textColor} sm:text-6xl`}
+          className={`absolute object-center text-3xl bottom-[100px] sm:bottom-[150px] font-serif font-bold ${textColor} sm:text-6xl`}
         >
           Which Will You Choose?
         </div>
