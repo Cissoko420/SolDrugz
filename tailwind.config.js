@@ -10,6 +10,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'slide-right': 'moveRight 1s ease-in-out infinite',
+      },
+      keyframes: {
+        moveRight: {
+          '0%': { tranform: 'translateX(-60px)' },
+          '100%': { tranform: 'translateX(calc(100vw + 60px))' },
+        },
+      },
+      translate: {
+        'running-pepe': 'calc(100vw + 60px)',
+      },
       backgroundImage: {
         'r-gradient-bb': 'radial-gradient(black, blue)',
       },

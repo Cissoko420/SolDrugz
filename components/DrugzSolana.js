@@ -9,7 +9,7 @@ const DrugzSolana = ({ text }) => {
       animate={{ opacity: 1, y: -30 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className='text-white text-4xl font-bold sm:text-[3.5rem]'>
+      <h1 className='text-white text-4xl mt-10 font-bold sm:text-[4rem]'>
         Drugz On Solana
       </h1>
     </motion.div>
