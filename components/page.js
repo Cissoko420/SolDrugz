@@ -8,6 +8,8 @@ const Layout = ({ children }) => {
   const [audio, setAudio] = useState(null)
   const [textColor, setTextColor] = useState('text-blue-500')
   const [showLastText, setShowLastText] = useState(false)
+  const [firstPlay, setFirstPlay] = useState(true)
+  const [buttonClick, setButtonClick] = useState(false)
 
   useEffect(() => {
     const indexIntervalId = setInterval(() => {
@@ -51,12 +53,50 @@ const Layout = ({ children }) => {
     if (audio) {
       if (isPlaying) {
         audio.pause()
+        setIsPlaying(false)
+        setButtonClick(false)
       } else {
-        audio.volume = 0.2
-        audio.currentTime = 13
-        audio.play()
+        if (!firstPlay) {
+          audio.volume = 0.2
+          audio.play()
+          setIsPlaying(true)
+          setButtonClick(true)
+        } else {
+          audio.volume = 0.2
+          audio.currentTime = 13
+          audio.play()
+          setFirstPlay(false)
+          setIsPlaying(true)
+          setButtonClick(true)
+        }
+      } //setIsPlaying(!isPlaying)
+    }
+  }
+
+  const playSoundCherHoverEnter = () => {
+    if (audio) {
+      if (!isPlaying) {
+        if (!firstPlay) {
+          audio.volume = 0.2
+          audio.play()
+          setIsPlaying(true)
+        } else {
+          audio.volume = 0.2
+          audio.currentTime = 13
+          audio.play()
+          setFirstPlay(false)
+          setIsPlaying(true)
+        }
       }
-      setIsPlaying(!isPlaying)
+    }
+  }
+
+  const playSoundCherHoverOut = () => {
+    if (audio) {
+      if (!buttonClick) {
+        audio.pause()
+        setIsPlaying(false)
+      }
     }
   }
 
@@ -118,8 +158,8 @@ const Layout = ({ children }) => {
         <img
           className={`z-50  w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] `}
           src='images/santa-running.gif'
-          onMouseOver={playSoundCher}
-          onMouseOut={playSoundCher}
+          onMouseOver={playSoundCherHoverEnter}
+          onMouseOut={playSoundCherHoverOut}
         />
         <div className='opacity-0 group-hover:opacity-95 pointer-events-none left-[30px] sm:left-[40px] w-[300px]  h-[500px] sm:w-[500px] sm:h-[500px] absolute z-50 bottom-full ml-2 bg-blue-700 text-yellow-500 p-2 text-center text-3xl sm:text-5xl flex items-center justify-center'>
           <TradingViewWidget />
@@ -144,9 +184,19 @@ const Layout = ({ children }) => {
           Which Will You Choose?
         </div>
       )}
+      <div className='group'>
+        <img
+          className='absolute w-[150px] h-[150px] top-[30px] left-[-105px] rotate-90 hover:left-[-50px]'
+          src='/images/st_small_507x507-pad_600x600_f8f8f8-removebg-preview-removebg-preview.png'
+          onMouseOver={playSoundCherHoverEnter}
+          onMouseOut={playSoundCherHoverOut}
+        ></img>
+        <div className='absolute place-content-center opacity-0 group-hover:opacity-100 pointer-events-none top-[80px] left-[100px] bg-blue-700 flex-col'>
+          <h2 className='font-serif font-bold text-4xl'>Tokenomics Soon</h2>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default Layout
-// -left-[60px] translate-x-running-pepe transition-transform duration-1000 ease-in
