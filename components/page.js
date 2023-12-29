@@ -122,6 +122,10 @@ const Layout = ({ children }) => {
 
   return (
     <div className='cursor-default bg-r-gradient-bb min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'>
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1.0, viewport-fit=cover'
+      />
       <DrugzSolana />
       <div
         className={`w-[150px] sm:w-[20%] ${
@@ -200,3 +204,14 @@ const Layout = ({ children }) => {
 }
 
 export default Layout
+{
+  /* <ul className='list-disc flex-col list-inside'>
+            <li>Airdrops 30%</li>
+            <li>Presale 10%</li>
+            <li>Team 10%</li>
+            <li>Liq Burn 15%</li>
+          </ul>
+          <ul className='inline-block'>
+            <li>Test</li>
+          </ul> */
+}
