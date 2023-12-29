@@ -118,6 +118,8 @@ const Layout = ({ children }) => {
         <img
           className={`z-50  w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] `}
           src='images/santa-running.gif'
+          onMouseOver={playSoundCher}
+          onMouseOut={playSoundCher}
         />
         <div className='opacity-0 group-hover:opacity-95 pointer-events-none left-[30px] sm:left-[40px] w-[300px]  h-[500px] sm:w-[500px] sm:h-[500px] absolute z-50 bottom-full ml-2 bg-blue-700 text-yellow-500 p-2 text-center text-3xl sm:text-5xl flex items-center justify-center'>
           <TradingViewWidget />
