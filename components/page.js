@@ -122,10 +122,6 @@ const Layout = ({ children }) => {
 
   return (
     <div className='cursor-default bg-r-gradient-bb min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'>
-      <meta
-        name='viewport'
-        content='width=device-width, initial-scale=1.0, viewport-fit=cover'
-      />
       <DrugzSolana />
       <div
         className={`w-[150px] sm:w-[20%] ${
@@ -196,7 +192,9 @@ const Layout = ({ children }) => {
           onMouseOut={playSoundCherHoverOut}
         ></img>
         <div className='absolute place-content-center opacity-0 group-hover:opacity-100 pointer-events-none top-[80px] left-[100px] bg-blue-700 flex-col'>
-          <h2 className='font-serif font-bold text-4xl'>Tokenomics Soon</h2>
+          <h2 className='font-serif font-bold text-2xl sm:text-4xl'>
+            Tokenomics Soon
+          </h2>
         </div>
       </div>
     </div>
