@@ -24,6 +24,8 @@ module.exports = {
       },
       backgroundImage: {
         'r-gradient-bb': 'radial-gradient(black, blue)',
+        'drugs-sol': "url('../public/images/new-logo.png')",
+        'cursor-drugz': "url('../public/images/cursor1.svg')",
       },
     },
   },

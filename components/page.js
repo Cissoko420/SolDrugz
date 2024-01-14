@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import DrugzSolana from './DrugzSolana'
 import TradingViewWidget from './TradingViewWidget'
+import Falling from './falling'
 
 const Layout = ({ children }) => {
   const [imageIndex, setImageIndex] = useState(0)
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
   const [showLastText, setShowLastText] = useState(false)
   const [firstPlay, setFirstPlay] = useState(true)
   const [buttonClick, setButtonClick] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const indexIntervalId = setInterval(() => {
@@ -120,8 +122,33 @@ const Layout = ({ children }) => {
     }
   }
 
+  const fallingLogosContainerRef = useRef(null)
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setTimeout(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY })
+      }, 50)
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
   return (
-    <div className='cursor-default bg-r-gradient-bb min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'>
+    <div
+      style={{}}
+      className=' bg-r-gradient-bb bg-cover bg-center min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'
+    >
+      <div
+        className='fixed w-[16px] h-[16px] bg-cursor-drugz bg-no-repeat bg-cover right-0 left-0 top-0 bottom-0'
+        style={{
+          left: `${mousePosition.x - 4}px`,
+          top: `${mousePosition.y - 2}px`,
+        }}
+      ></div>
       <DrugzSolana />
       <div
         className={`w-[150px] sm:w-[20%] ${
@@ -192,24 +219,14 @@ const Layout = ({ children }) => {
           onMouseOut={playSoundCherHoverOut}
         ></img>
         <div className='absolute place-content-center opacity-0 group-hover:opacity-100 pointer-events-none top-[80px] left-[100px] bg-blue-700 flex-col'>
-          <h2 className='font-serif font-bold text-2xl sm:text-4xl'>
+          <h2 className='font-serif font-bold text-red-600 text-2xl sm:text-4xl'>
             Tokenomics Soon
           </h2>
         </div>
       </div>
+      <Falling />
     </div>
   )
 }
 
 export default Layout
-{
-  /* <ul className='list-disc flex-col list-inside'>
-            <li>Airdrops 30%</li>
-            <li>Presale 10%</li>
-            <li>Team 10%</li>
-            <li>Liq Burn 15%</li>
-          </ul>
-          <ul className='inline-block'>
-            <li>Test</li>
-          </ul> */
-}
