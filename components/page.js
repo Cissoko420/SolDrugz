@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
       setTextColor((prevColor) =>
         prevColor === 'text-blue-500' ? 'text-red-500' : 'text-blue-500'
       )
-    }, 1500)
+    }, 2000)
 
     return () => {
       clearInterval(colorIntervalId)
@@ -50,6 +50,8 @@ const Layout = ({ children }) => {
   const imageSrc = `/images/solana-logo_2${
     imageIndex === 0 ? '_blue' : '_red'
   }.png`
+
+  const imagePepe = '/images/jacket_closed.png'
 
   const playSoundCher = () => {
     if (audio) {
@@ -122,8 +124,6 @@ const Layout = ({ children }) => {
     }
   }
 
-  const fallingLogosContainerRef = useRef(null)
-
   useEffect(() => {
     const handleMouseMove = (e) => {
       setTimeout(() => {
@@ -137,11 +137,53 @@ const Layout = ({ children }) => {
     }
   }, [])
 
+  const [animateImage, setAnimateImage] = useState(false)
+  const [firstAnimationCompleted, setFirstAnimationCompleted] = useState(false)
+
+  useEffect(() => {
+    const handleTransitionEnd = () => {
+      setAnimateImage((prevAnimateImage) => !prevAnimateImage)
+    }
+
+    const movingImage = document.querySelector('.moving-image')
+
+    if (movingImage) {
+      movingImage.addEventListener('transitionend', handleTransitionEnd)
+
+      return () => {
+        movingImage.removeEventListener('transitionend', handleTransitionEnd)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const startAnimation = setTimeout(() => {
+      setAnimateImage((prevAnimateImage) => !prevAnimateImage)
+      setTimeout(() => {
+        setFirstAnimationCompleted(true)
+      }, 2000)
+      setFirstAnimationCompleted(false)
+    }, 5000)
+
+    return () => {
+      clearTimeout(startAnimation)
+    }
+  }, [animateImage])
+
+  useEffect(() => {
+    if (firstAnimationCompleted) {
+      const resetSecondImage = setTimeout(() => {
+        setAnimateImage(false)
+      }, 10000)
+
+      return () => {
+        clearTimeout(resetSecondImage)
+      }
+    }
+  }, [firstAnimationCompleted])
+
   return (
-    <div
-      style={{}}
-      className=' bg-r-gradient-bb bg-cover bg-center min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'
-    >
+    <div className='bg-r-gradient-bb bg-cover bg-center min-w-[100vw] min-h-[100vh] flex flex-col items-center justify-center gap-5 overflow-x-hidden overscroll-y-none m-0 p-0'>
       <div
         className='fixed w-[16px] h-[16px] bg-cursor-drugz bg-no-repeat bg-cover right-0 left-0 top-0 bottom-0'
         style={{
@@ -153,7 +195,7 @@ const Layout = ({ children }) => {
       <div
         className={`w-[150px] sm:w-[20%] ${
           flip ? 'scale-x-[-1]' : 'scale-x-100'
-        } transition durantion-1000 ease-in-out`}
+        } transition durantion-3000 ease-in-out`}
       >
         <img
           src={imageSrc}
@@ -225,6 +267,19 @@ const Layout = ({ children }) => {
         </div>
       </div>
       <Falling />
+      <div
+        className={`absolute w-[5%] bottom-[150px] md:bottom-[250px] left-0 sm:w-[10%] md:w-[10%] ${
+          animateImage
+            ? 'translate-x-[-50px] md:translate-x-[-50px]'
+            : 'translate-x-[-200px] md:translate-x-[-300px]'
+        } transition-transform duration-1000 ease-in-out`}
+      >
+        <img
+          src={firstAnimationCompleted ? '/images/jacket_open.png' : imagePepe}
+          alt='Logo'
+          className={`min-w-[150px] object-cover mt-10 sm:w-full scale-x-[-1] moving-image`}
+        />
+      </div>
     </div>
   )
 }
